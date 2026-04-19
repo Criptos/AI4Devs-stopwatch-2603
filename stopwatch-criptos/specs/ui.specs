@@ -1,0 +1,56 @@
+UI Specification: Classic Digital Stopwatch
+
+  1. Visual Overview
+  El diseño consiste en un panel de visualización digital superior con bordes redondeados y dos botones de acción
+  grandes en la parte inferior (Start y Clear). El estilo es minimalista, con bordes gruesos y colores sólidos.
+
+  2. Layout & Components
+
+  A. Display Container (Cronómetro)
+   - Shape: Rectángulo con esquinas muy redondeadas (border-radius: ~40px).
+   - Background: Color azul muy pálido / blanquecino (#E6E6FA o similar).
+   - Border: Borde sólido grueso, color gris oscuro/negro (#333).
+   - Content:
+       - Main Time: Formato HH:MM:SS en una fuente sans-serif grande y negrita (ej. Arial o Roboto).
+       - Milliseconds: Tres dígitos pequeños (000) ubicados en la esquina inferior derecha del área de
+         visualización.
+
+  B. Controls Container
+   - Layout: Flexbox horizontal con espacio uniforme entre los botones.
+   - Buttons:
+       1. Start Button:
+           - Color: Verde vibrante (#00FF00).
+           - Label: "Start" (Negro, centrado).
+           - Shape: Rectángulo redondeado con borde grueso oscuro.
+       2. Clear Button:
+           - Color: Rojo vibrante (#FF0000).
+           - Label: "Clear" (Negro, centrado).
+           - Shape: Rectángulo redondeado con borde grueso oscuro.
+
+  3. Technical Specifications (CSS)
+
+  ┌────────────────┬────────────────────┬───────────────────────────────┐
+  │ Elemento       │ Propiedad Sugerida │ Valor Estimado                │
+  ├────────────────┼────────────────────┼───────────────────────────────┤
+  │ Display Font   │ font-family        │ Sans-serif (Arial, Helvetica) │
+  │ Main Time Size │ font-size          │ 80px - 100px                  │
+  │ MS Time Size   │ font-size          │ 24px - 30px                   │
+  │ Border Width   │ border             │ 5px solid #333                │
+  │ Button Padding │ padding            │ 15px 40px                     │
+  │ Gap            │ gap                │ 30px                          │
+  └────────────────┴────────────────────┴───────────────────────────────┘
+  4. Interaction & Logic (JavaScript)
+
+   - Start/Stop Toggle: 
+       - Al hacer clic en Start, el cronómetro comienza a contar y el texto del botón cambia a Stop.
+       - Al hacer clic en Stop, el cronómetro se detiene y el texto vuelve a ser Start.
+   - Clear:
+       - Detiene el cronómetro si está corriendo.
+       - Reinicia los valores a 00:00:00 y milisegundos a 000.
+   - Time Logic: 
+       - Utilizar requestAnimationFrame o setInterval (cada 10ms) para una actualización fluida de los milisegundos.
+
+  5. Assets & Icons
+   - No se requieren imágenes externas. Todo el diseño debe ser generado mediante CSS (propiedades de border,
+     border-radius y background-color).
+
